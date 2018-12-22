@@ -1,0 +1,10 @@
+.Session{
+    height: 100%;
+}
+.SessionHistory{
+    height: calc(100% - 260px);
+    overflow: hidden;
+}
+.SessionInput{
+    height: 260px;
+}
