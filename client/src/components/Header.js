@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux'
 import './Header.css';
 
 const Header = ()=>(
@@ -9,4 +8,4 @@ const Header = ()=>(
   </div>
 )
 
-export default connect()(Header);
+export default Header;
