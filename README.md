@@ -1,2 +1,27 @@
 # rim
-an online chart application based on socket.io
+
+## Intro
+
+**R**ebuild **I**nstant **M**essager
+
+An online chart room app based on socket.io
+
+
+## Setup
+* Client
+    ```bash
+    cd client
+    npm i
+    npm run build
+    npm install -g serve
+    serve -s build
+    ```
+* Server
+    ```bash
+    node server/index.js
+    ```
+
+
+## Demo
+
+![rim](./asset/rim.png)
