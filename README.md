@@ -18,7 +18,9 @@ An online chart room app based on socket.io
     ```
 * Server
     ```bash
-    node server/index.js
+    cd server
+    npm i
+    node index.js
     ```
 
 
