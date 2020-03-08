@@ -1,7 +1,6 @@
 import React from 'react';
 import Input from './Input';
 import History from './History';
-import Tools from './Tools';
 import './SessionPanel.css'
 
 const SessionPanel = ({session}) =>(
@@ -13,7 +12,6 @@ const SessionPanel = ({session}) =>(
           />
         </div>
         <div className="SessionInput">
-          <Tools/>
           <Input
             sid={session.id}
           />

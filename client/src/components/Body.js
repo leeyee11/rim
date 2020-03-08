@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SidePanel from './SidePanel';
 import SessionPanel from './SessionPanel';
 import './Body.css';
-import { getClient } from '../services/client';
 
 const Body = ({ sid, sessions, setSid }) => (
   <div className="Body Container">

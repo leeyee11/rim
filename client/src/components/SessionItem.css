@@ -1,4 +1,5 @@
 .SessionItem{
+    cursor: pointer;
     height: 5rem;
     box-sizing: border-box;
     padding: 0.5rem;
@@ -30,5 +31,17 @@
 }
 .SessionItem > .SIBody {
     height: 2rem;
+    line-height: 2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #acacac;
+}
+.SessionItem > .SIBody > .SISender{
+    color: #ffffff;
+    box-sizing: border-box;
+    padding-right: 0.5rem;
+}
+.SessionItem > .SIBody > .SIContent{
     color: #acacac;
 }

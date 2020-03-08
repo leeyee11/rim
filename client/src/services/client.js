@@ -4,35 +4,50 @@ class Client {
   constructor(props) {
     this.socket = socket;
     this.uid = Math.random().toString(16).slice(2);
-    this.online = true;
+    this.online = false;
+    this.alias = null;
   }
   getUid() {
     return this.uid;
   }
+  getAlias() {
+    return this.alias;
+  }
   subscribe(event, callback) {
     this.socket.on(event, callback);
   }
-  register() {
-    this.socket.emit('register', { uid:this.uid });
-    this.socket.on(`register:${this.uid}`, () => {
-      this.status = 200;
-    })
+  register(alias) {
+    return new Promise((resolve, reject) => {
+      this.socket.emit('clientRegister', { uid: this.uid, alias });
+      this.socket.on(`clientRegister:${this.uid}`, ({ isRegistered, msg, alias }) => {
+        if (isRegistered) {
+          this.online = true;
+          this.alias = alias;
+          console.log(alias);
+          resolve({ isRegistered, msg, alias })
+        } else {
+          reject({ isRegistered, msg, alias })
+        }
+      })
+    });
   }
-  send({uid, sid, content}) {
-    if( this.online ){
-      this.socket.emit('clientMessage',{uid, sid, content})
-      return {isSent:1}
+  send({ sid, content }) {
+    if (this.online) {
+      this.socket.emit('clientMessage', { uid: this.uid, sid, content })
+      return { isSent: 1, msg: null }
     } else {
-      return {isSent:0}
+      return { isSent: 0, msg: 'Please login.' }
     }
   }
   listen(sids, updateMethod) {
-    sids.forEach((sid)=>{
-      this.socket.on(
-        `clientMessage:${sid}`,
-        (msg) => updateMethod(msg)
-      )
-    })
+    if(this.online){
+      sids.forEach((sid) => {
+        this.socket.on(
+          `clientMessage:${sid}`,
+          (msg) => updateMethod(msg)
+        )
+      })
+    }
   }
   off(sids) {
     sids.forEach((sid) => {

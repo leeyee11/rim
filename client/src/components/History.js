@@ -7,7 +7,6 @@ const History = ({ sid, messages }) => {
   
   useEffect(()=>{
     history.current.scrollTop = history.current.scrollHeight;
-    console.log('scroll')
   },[messages])
   
   return (
@@ -21,7 +20,8 @@ const History = ({ sid, messages }) => {
             <Message
               key={msg.mid}
               uid={msg.uid}
-              time={msg.time}
+              alias={msg.alias}
+              ts={msg.ts}
               content={msg.content}
             />
           );

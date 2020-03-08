@@ -1,32 +1,32 @@
 import React from 'react';
 import './Message.css'
 import { getClient } from '../services/client';
+import { timeLabel } from '../util/dt';
+import { suffix } from '../util/usr';
 
-const Message = ({ uid, time, content}) => (
+const msgStyle = (uid) => (
+  uid === getClient().getUid() 
+    ? 'RightMessage' 
+    : 'LeftMessage'
+)
+
+const Message = ({ uid, alias, ts, content}) => (
   <div className="Message">
-    <div
-      className={
-        uid === getClient().getUid() 
-          ? 'RightMessage' 
-          : 'LeftMessage'
-      }
-    >
+    <div className={msgStyle(uid)}>
       <div className="MessageSender">
-        {uid}
-      </div>
-      <div className="MessageTime">
-        {time}
+        <span className="MessageSenderAlias">
+          {alias}
+        </span>
+        <span className="MessageSenderSuffix">
+          {suffix(uid)}
+        </span>
       </div>
       <div className="MessageContent">
-        {
-          content.split('\n')
-            .map((item, index) => (
-              <span key={index}>
-                <i>{item}</i><br />
-              </span>
-            )
-          )
-        }
+        <span dangerouslySetInnerHTML={{__html:content}}>
+        </span>
+      </div>
+      <div className="MessageTime">
+        {timeLabel(ts)}
       </div>
     </div>
   </div>

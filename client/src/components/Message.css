@@ -5,22 +5,28 @@
     padding: 0.6em 1.2em 0.6em 1.2em;
 }
 .MessageSender{
-    font-weight: bolder;
+    cursor: pointer;
     color:white;
     box-sizing: border-box;
-    padding-bottom: 0.4em;
+    padding: 0.2em 0;
 }
 .MessageTime{
+    cursor: pointer;
     color: rgba(255,255,255,0.2);
+    font-size: 0.8rem;
+    line-height: 1.25;
     max-height: 0;
+    height: 1rem;
     overflow: hidden;
     box-sizing: border-box;
-    padding-bottom: 0em;
     transition: all 0.2s;
 }
+.MessageContent {
+    word-break: break-all;
+    padding: 0.2rem 0;
+}
 .Message:hover .MessageTime{
-    max-height: 2em;
-    padding-bottom: 0.4em;
+    max-height: 1em;
 }
 .LeftMessage{
     text-align: left;
@@ -29,4 +35,14 @@
 .RightMessage{
     text-align: right;
     color:rgba(255,255,255,0.8);
+}
+.MessageSenderAlias{
+    font-weight: 700;
+    color: #ffffff;
+}
+.MessageSenderSuffix{
+    display: none;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    color: #acacac;
 }
