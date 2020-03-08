@@ -16,7 +16,7 @@ const io = require('socket.io')({
 
 io.attach(5000, {
   pingInterval: 1000,
-  pingTimeout: 5000,
+  pingTimeout: 60000,
   cookie: false
 });
 
